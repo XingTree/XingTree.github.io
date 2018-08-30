@@ -262,7 +262,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/29/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/30/Tomcat占用CPU过高问题排查/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="XingTree">
@@ -281,7 +281,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/08/29/hello-world/" itemprop="url">Hello World</a></h1>
+                <a class="post-title-link" href="/2018/08/30/Tomcat占用CPU过高问题排查/" itemprop="url">Tomcat占用CPU过高问题排查</a></h1>
         
 
         <div class="post-meta">
@@ -293,8 +293,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-29T20:46:25+08:00">
-                2018-08-29
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-30T18:57:11+08:00">
+                2018-08-30
               </time>
             
 
@@ -316,8 +316,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/测试/" itemprop="url" rel="index">
-                    <span itemprop="name">测试</span>
+                  <a href="/categories/随笔/" itemprop="url" rel="index">
+                    <span itemprop="name">随笔</span>
                   </a>
                 </span>
 
@@ -355,11 +355,19 @@
       
         
           
-          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in 
+          今天遇到服务器中的Tomcat服务占用CPU过高,造成服务卡死,所以记录一下大概排查问题的过程.
+第一步: 定位进程PID
+首先,我们需要找到Tomcat的进程PID.方法有很多:
+
+直接使用top命令查看.
+使用ps命令.
+因为Tomcat运行在JVM上,我们也可以直接使用jps命令查看.
+
+第二
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/08/29/hello-world/#more" rel="contents">
+            <a class="btn" href="/2018/08/30/Tomcat占用CPU过高问题排查/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
