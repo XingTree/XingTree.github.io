@@ -88,7 +88,7 @@
 <meta property="og:description" content="ThreadLocal为每个使用该变量的线程提供了属于该线程独立的变量副本,为解决多线程安全问题提供了一种新的思路. 当我们需要使用一些不是线程安全的,并且线程之间也没有必要共享数据的对象时,我们就可以使用ThreadLocal,比如我们常用的SimpleDateFormat,SimpleDateFormat其实是线程不安全的,多个线程共享使用同一个SimpleDateFormat对象时,就有可能">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/02/24/ThreadLocal/ThreadLocal中弱引用.png">
-<meta property="og:updated_time" content="2019-02-26T00:54:41.738Z">
+<meta property="og:updated_time" content="2019-02-26T11:34:43.839Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ThreadLocal">
 <meta name="twitter:description" content="ThreadLocal为每个使用该变量的线程提供了属于该线程独立的变量副本,为解决多线程安全问题提供了一种新的思路. 当我们需要使用一些不是线程安全的,并且线程之间也没有必要共享数据的对象时,我们就可以使用ThreadLocal,比如我们常用的SimpleDateFormat,SimpleDateFormat其实是线程不安全的,多个线程共享使用同一个SimpleDateFormat对象时,就有可能">
@@ -399,8 +399,6 @@
 <img src="/2019/02/24/ThreadLocal/ThreadLocal中弱引用.png" title="ThreadLocalMap中的弱引用">
 <p>这里可能有些同学有这样的疑问,<strong>ThreadLocal</strong>对象是被回收了,但是在<strong>ThreadLocalMap</strong>中还有<strong>Entry</strong>对象,还有<strong>Entry</strong>对象中的value对应的对象呢?</p>
 <p>相信大家还记得上一节我们分析<strong>ThreadLocalMap</strong>中的<strong>set</strong>方法时,里面提到了<strong>replaceStaleEntry</strong>方法和<strong>cleanSomeSlots</strong>方法,这些方法都是用来清理这些<strong>无效Entry</strong>的.还有在<strong>ThreadLocalMap</strong>中<strong>getEntry</strong>时遇到这些<strong>无效Entry</strong>时,都会进行删除清理.</p>
-<h1 id="ThreadLocalMap清理无效Entry"><a href="#ThreadLocalMap清理无效Entry" class="headerlink" title="ThreadLocalMap清理无效Entry"></a>ThreadLocalMap清理无效Entry</h1><p>未完待续…</p>
-<h1 id="rehash扩容"><a href="#rehash扩容" class="headerlink" title="rehash扩容"></a>rehash扩容</h1><p>未完待续…</p>
 
       
     </div>
@@ -591,7 +589,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基本使用方法"><span class="nav-number">1.</span> <span class="nav-text">基本使用方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ThreadLocal基本原理"><span class="nav-number">2.</span> <span class="nav-text">ThreadLocal基本原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ThreadLocal-set-方法解析"><span class="nav-number">2.1.</span> <span class="nav-text">ThreadLocal.set()方法解析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ThreadLocal-get-方法解析"><span class="nav-number">2.2.</span> <span class="nav-text">ThreadLocal.get()方法解析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ThreadLocal深入了解"><span class="nav-number">3.</span> <span class="nav-text">ThreadLocal深入了解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ThreadLocalMap"><span class="nav-number">3.1.</span> <span class="nav-text">ThreadLocalMap</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Entry为何对ThreadLocal弱引用"><span class="nav-number">3.2.</span> <span class="nav-text">Entry为何对ThreadLocal弱引用?</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ThreadLocalMap清理无效Entry"><span class="nav-number">4.</span> <span class="nav-text">ThreadLocalMap清理无效Entry</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#rehash扩容"><span class="nav-number">5.</span> <span class="nav-text">rehash扩容</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基本使用方法"><span class="nav-number">1.</span> <span class="nav-text">基本使用方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ThreadLocal基本原理"><span class="nav-number">2.</span> <span class="nav-text">ThreadLocal基本原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ThreadLocal-set-方法解析"><span class="nav-number">2.1.</span> <span class="nav-text">ThreadLocal.set()方法解析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ThreadLocal-get-方法解析"><span class="nav-number">2.2.</span> <span class="nav-text">ThreadLocal.get()方法解析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ThreadLocal深入了解"><span class="nav-number">3.</span> <span class="nav-text">ThreadLocal深入了解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ThreadLocalMap"><span class="nav-number">3.1.</span> <span class="nav-text">ThreadLocalMap</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Entry为何对ThreadLocal弱引用"><span class="nav-number">3.2.</span> <span class="nav-text">Entry为何对ThreadLocal弱引用?</span></a></li></ol></li></ol></div>
             
 
           </div>
