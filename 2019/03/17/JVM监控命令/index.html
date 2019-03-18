@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="JVM," />
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="假装学习时写下的博客,说停更就停更">
-<meta property="og:type" content="website">
-<meta property="og:title" content="文章分类">
-<meta property="og:url" content="http://yoursite.com/categories/index.html">
+<meta name="description" content="Sun JDK包中提供了一系列工具用于查询JVM虚拟机的状态,这些工具都非常实用. jps显示指定系统内所有的HotSpot虚拟机进程. 命令格式: jps [optinos] optinos : -q : 只输出进程Id,省略主类名称 -m : 输出虚拟机进程启动时传递给主类main()函数的参数 -l : 输出主类的全名 -v : 输出虚拟机进程启动时JVM参数  jstat用于监视虚拟机各种">
+<meta name="keywords" content="JVM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JVM监控命令">
+<meta property="og:url" content="http://yoursite.com/2019/03/17/JVM监控命令/index.html">
 <meta property="og:site_name" content="假装学习">
-<meta property="og:description" content="假装学习时写下的博客,说停更就停更">
+<meta property="og:description" content="Sun JDK包中提供了一系列工具用于查询JVM虚拟机的状态,这些工具都非常实用. jps显示指定系统内所有的HotSpot虚拟机进程. 命令格式: jps [optinos] optinos : -q : 只输出进程Id,省略主类名称 -m : 输出虚拟机进程启动时传递给主类main()函数的参数 -l : 输出主类的全名 -v : 输出虚拟机进程启动时JVM参数  jstat用于监视虚拟机各种">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-29T13:51:12.815Z">
+<meta property="og:updated_time" content="2019-03-18T13:55:33.643Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="文章分类">
-<meta name="twitter:description" content="假装学习时写下的博客,说停更就停更">
+<meta name="twitter:title" content="JVM监控命令">
+<meta name="twitter:description" content="Sun JDK包中提供了一系列工具用于查询JVM虚拟机的状态,这些工具都非常实用. jps显示指定系统内所有的HotSpot虚拟机进程. 命令格式: jps [optinos] optinos : -q : 只输出进程Id,省略主类名称 -m : 输出虚拟机进程启动时传递给主类main()函数的参数 -l : 输出主类的全名 -v : 输出虚拟机进程启动时JVM参数  jstat用于监视虚拟机各种">
 
 
 
@@ -119,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/03/17/JVM监控命令/"/>
 
 
 
 
 
-  <title>文章分类 | 假装学习</title>
+  <title>JVM监控命令 | 假装学习</title>
   
 
 
@@ -250,40 +251,182 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/17/JVM监控命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XingTree">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="假装学习">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">文章分类</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="category-all-page">
-            <div class="category-all-title">
-                目前共计 2 个分类
-            </div>
-            <div class="category-all">
-              <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java基础/">Java基础</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工作中遇到的坑/">工作中遇到的坑</a><span class="category-list-count">2</span></li></ul>
-            </div>
-          </div>
+          <h1 class="post-title" itemprop="name headline">JVM监控命令</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-17T21:52:30+08:00">
+                2019-03-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java基础/" itemprop="url" rel="index">
+                    <span itemprop="name">Java基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <p>Sun JDK包中提供了一系列工具用于查询JVM虚拟机的状态,这些工具都非常实用.</p>
+<h1 id="jps"><a href="#jps" class="headerlink" title="jps"></a>jps</h1><p>显示指定系统内所有的HotSpot虚拟机进程.</p>
+<p>命令格式: <strong>jps [optinos]</strong></p>
+<p><strong>optinos</strong> : <br><br><strong>-q</strong> : 只输出进程Id,省略主类名称 <br><br><strong>-m</strong> : 输出虚拟机进程启动时传递给主类main()函数的参数 <br><br><strong>-l</strong> : 输出主类的全名 <br><br><strong>-v</strong> : 输出虚拟机进程启动时JVM参数 <br></p>
+<h1 id="jstat"><a href="#jstat" class="headerlink" title="jstat"></a>jstat</h1><p>用于监视虚拟机各种运行状态信息.</p>
+<p>命令格式: <strong>jstat [optons vmid [interval][s|ms] [count]]</strong> <br></p>
+<p><strong>vmid</strong> : 虚拟机进程Id <br><br><strong>interval</strong> : 查询间隔时间<br><strong>count</strong> : 查询次数</p>
+<p>eg: <br><br><strong>jstat -gc 2764 250 20</strong> 代表每250毫秒查询一次进程2764垃圾收集状况,一共查询20次.</p>
+<p><strong>optinos</strong> : <br><br><strong>-class</strong> : 显示类加载的相关信息 <br><br><strong>-compiler</strong> : 显示JIT编译的相关信息 <br><br><strong>-gc</strong> : 显示GC相关的信息 <br><br><strong>-gccapacity</strong> : 显示各个代的容量以及使用情况 <br><br><strong>-gccause</strong> : 显示垃圾回收的相关信息,同时显示最后一次或当前正在发生的垃圾回收的诱因 <br><br><strong>-gcmetacapacity</strong> : 显示metaspace的大小 <br><br><strong>-gcnew</strong> : 显示新生代信息 <br><br><strong>-gcnewcapacity</strong> : 显示新生代大小和使用情况 <br><br><strong>-gcold</strong> : 显示老年代和永久代的信息 <br><br><strong>-gcoldcapacity</strong> : 显示老年代的大小 <br><br><strong>-gcutil</strong> : 显示垃圾收集信息 <br><br><strong>-printcompilation</strong> : 输出JIT编译的方法信息 <br></p>
+<h1 id="jmap"><a href="#jmap" class="headerlink" title="jmap"></a>jmap</h1><p>用于监视虚拟机中内存情况.</p>
+<p>命令格式: <strong>jmap [options] vmid</strong></p>
+<p><strong>optinos</strong> : <br><br><strong>-heap</strong> : 输出虚拟机堆内存相关信息 <br><br><strong>-histo[:live]</strong> : 输出虚拟机堆中类的对象占用信息,如果加了”:live”,则只输出存活的类的对象的占用信息 <br><br><strong>-clstats</strong> : 打印类加载器的统计信息 <br><br><strong>-finalizerinfo</strong> : 打印正等候回收的对象的信息  <br><br><strong>-dump:<dump-options></dump-options></strong> : dump虚拟机堆到文件,<dump-options>包含<strong>live</strong>、<strong>format=b</strong>、<strong>file</strong>,eg:<strong>jmap -dump:live,format=b,file=dump.hprof vmid</strong></dump-options></p>
+<h1 id="jinfo"><a href="#jinfo" class="headerlink" title="jinfo"></a>jinfo</h1><p>实时查看和调整虚拟机各项参数.</p>
+<p>命令格式: <strong>jinfo [options] vmid</strong></p>
+<h1 id="jstack"><a href="#jstack" class="headerlink" title="jstack"></a>jstack</h1><p>用于生成虚拟机当前时刻的线程快照.</p>
+<p>命令格式: <strong>jstack [options] vmid</strong></p>
+<p><strong>optinos</strong> : <br><br><strong>-F</strong> : 当正常输出的请求不被响应时,强制输出线程堆栈 <br><br><strong>-l</strong> : 除堆栈外,显示关于锁的附加信息 <br><br><strong>-m</strong> : 如果调用到本地方法的话,显示C/C++的堆栈</p>
+
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JVM/" rel="tag"># JVM</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/07/JVM垃圾回收机制/" rel="next" title="JVM垃圾回收机制">
+                <i class="fa fa-chevron-left"></i> JVM垃圾回收机制
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -316,8 +459,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -397,6 +549,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#jps"><span class="nav-number">1.</span> <span class="nav-text">jps</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#jstat"><span class="nav-number">2.</span> <span class="nav-text">jstat</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#jmap"><span class="nav-number">3.</span> <span class="nav-text">jmap</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#jinfo"><span class="nav-number">4.</span> <span class="nav-text">jinfo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#jstack"><span class="nav-number">5.</span> <span class="nav-text">jstack</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
