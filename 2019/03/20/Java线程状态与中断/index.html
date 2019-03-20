@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="JVM," />
+  <meta name="keywords" content="Java,线程," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Sun JDK包中提供了一系列工具用于查询JVM虚拟机的状态,这些工具都非常实用. jps显示指定系统内所有的HotSpot虚拟机进程. 命令格式: jps [optinos] optinos : -q : 只输出进程Id,省略主类名称 -m : 输出虚拟机进程启动时传递给主类main()函数的参数 -l : 输出主类的全名 -v : 输出虚拟机进程启动时JVM参数  jstat用于监视虚拟机各种">
-<meta name="keywords" content="JVM">
+<meta name="description" content="Java中线程的状态在JVM中给线程定义了六种状态: NEW : 当一个线程被实例化,还未调用start()方法时的状态. RUNNABLE : 线程处于运行时的状态,但并不是所有RUNNABLE状态的线程都在被CPU所执行,正在等待CPU分配时间片的线程状态也是RUNNABLE. BLOCKED : 线程阻塞状态,线程竞争锁失败,被阻塞时的状态.WAITING : 无限期等待状态,一般调用没有设">
+<meta name="keywords" content="Java,线程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JVM监控命令">
-<meta property="og:url" content="http://yoursite.com/2019/03/17/JVM监控命令/index.html">
+<meta property="og:title" content="Java线程状态与中断">
+<meta property="og:url" content="http://yoursite.com/2019/03/20/Java线程状态与中断/index.html">
 <meta property="og:site_name" content="假装学习">
-<meta property="og:description" content="Sun JDK包中提供了一系列工具用于查询JVM虚拟机的状态,这些工具都非常实用. jps显示指定系统内所有的HotSpot虚拟机进程. 命令格式: jps [optinos] optinos : -q : 只输出进程Id,省略主类名称 -m : 输出虚拟机进程启动时传递给主类main()函数的参数 -l : 输出主类的全名 -v : 输出虚拟机进程启动时JVM参数  jstat用于监视虚拟机各种">
+<meta property="og:description" content="Java中线程的状态在JVM中给线程定义了六种状态: NEW : 当一个线程被实例化,还未调用start()方法时的状态. RUNNABLE : 线程处于运行时的状态,但并不是所有RUNNABLE状态的线程都在被CPU所执行,正在等待CPU分配时间片的线程状态也是RUNNABLE. BLOCKED : 线程阻塞状态,线程竞争锁失败,被阻塞时的状态.WAITING : 无限期等待状态,一般调用没有设">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-18T13:55:33.643Z">
+<meta property="og:updated_time" content="2019-03-20T14:51:39.843Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JVM监控命令">
-<meta name="twitter:description" content="Sun JDK包中提供了一系列工具用于查询JVM虚拟机的状态,这些工具都非常实用. jps显示指定系统内所有的HotSpot虚拟机进程. 命令格式: jps [optinos] optinos : -q : 只输出进程Id,省略主类名称 -m : 输出虚拟机进程启动时传递给主类main()函数的参数 -l : 输出主类的全名 -v : 输出虚拟机进程启动时JVM参数  jstat用于监视虚拟机各种">
+<meta name="twitter:title" content="Java线程状态与中断">
+<meta name="twitter:description" content="Java中线程的状态在JVM中给线程定义了六种状态: NEW : 当一个线程被实例化,还未调用start()方法时的状态. RUNNABLE : 线程处于运行时的状态,但并不是所有RUNNABLE状态的线程都在被CPU所执行,正在等待CPU分配时间片的线程状态也是RUNNABLE. BLOCKED : 线程阻塞状态,线程竞争锁失败,被阻塞时的状态.WAITING : 无限期等待状态,一般调用没有设">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/03/17/JVM监控命令/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/03/20/Java线程状态与中断/"/>
 
 
 
 
 
-  <title>JVM监控命令 | 假装学习</title>
+  <title>Java线程状态与中断 | 假装学习</title>
   
 
 
@@ -263,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/17/JVM监控命令/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/20/Java线程状态与中断/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="XingTree">
@@ -280,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JVM监控命令</h1>
+          <h1 class="post-title" itemprop="name headline">Java线程状态与中断</h1>
         
 
         <div class="post-meta">
@@ -292,8 +292,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-17T21:52:30+08:00">
-                2019-03-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-20T20:38:27+08:00">
+                2019-03-20
               </time>
             
 
@@ -352,23 +352,21 @@
       
 
       
-        <p>Sun JDK包中提供了一系列工具用于查询JVM虚拟机的状态,这些工具都非常实用.</p>
-<h1 id="jps"><a href="#jps" class="headerlink" title="jps"></a>jps</h1><p>显示指定系统内所有的HotSpot虚拟机进程.</p>
-<p>命令格式: <strong>jps [optinos]</strong></p>
-<p><strong>optinos</strong> : <br><br><strong>-q</strong> : 只输出进程Id,省略主类名称 <br><br><strong>-m</strong> : 输出虚拟机进程启动时传递给主类main()函数的参数 <br><br><strong>-l</strong> : 输出主类的全名 <br><br><strong>-v</strong> : 输出虚拟机进程启动时JVM参数 <br></p>
-<h1 id="jstat"><a href="#jstat" class="headerlink" title="jstat"></a>jstat</h1><p>用于监视虚拟机各种运行状态信息.</p>
-<p>命令格式: <strong>jstat [optons vmid [interval][s|ms] [count]]</strong> <br></p>
-<p><strong>vmid</strong> : 虚拟机进程Id <br><br><strong>interval</strong> : 查询间隔时间<br><strong>count</strong> : 查询次数</p>
-<p>eg: <br><br><strong>jstat -gc 2764 250 20</strong> 代表每250毫秒查询一次进程2764垃圾收集状况,一共查询20次.</p>
-<p><strong>optinos</strong> : <br><br><strong>-class</strong> : 显示类加载的相关信息 <br><br><strong>-compiler</strong> : 显示JIT编译的相关信息 <br><br><strong>-gc</strong> : 显示GC相关的信息 <br><br><strong>-gccapacity</strong> : 显示各个代的容量以及使用情况 <br><br><strong>-gccause</strong> : 显示垃圾回收的相关信息,同时显示最后一次或当前正在发生的垃圾回收的诱因 <br><br><strong>-gcmetacapacity</strong> : 显示metaspace的大小 <br><br><strong>-gcnew</strong> : 显示新生代信息 <br><br><strong>-gcnewcapacity</strong> : 显示新生代大小和使用情况 <br><br><strong>-gcold</strong> : 显示老年代和永久代的信息 <br><br><strong>-gcoldcapacity</strong> : 显示老年代的大小 <br><br><strong>-gcutil</strong> : 显示垃圾收集信息 <br><br><strong>-printcompilation</strong> : 输出JIT编译的方法信息 <br></p>
-<h1 id="jmap"><a href="#jmap" class="headerlink" title="jmap"></a>jmap</h1><p>用于监视虚拟机中内存情况.</p>
-<p>命令格式: <strong>jmap [options] vmid</strong></p>
-<p><strong>optinos</strong> : <br><br><strong>-heap</strong> : 输出虚拟机堆内存相关信息 <br><br><strong>-histo[:live]</strong> : 输出虚拟机堆中类的对象占用信息,如果加了”:live”,则只输出存活的类的对象的占用信息 <br><br><strong>-clstats</strong> : 打印类加载器的统计信息 <br><br><strong>-finalizerinfo</strong> : 打印正等候回收的对象的信息  <br><br><strong>-dump:<dump-options></dump-options></strong> : dump虚拟机堆到文件,<dump-options>包含<strong>live</strong>、<strong>format=b</strong>、<strong>file</strong>,eg:<strong>jmap -dump:live,format=b,file=dump.hprof vmid</strong></dump-options></p>
-<h1 id="jinfo"><a href="#jinfo" class="headerlink" title="jinfo"></a>jinfo</h1><p>实时查看和调整虚拟机各项参数.</p>
-<p>命令格式: <strong>jinfo [options] vmid</strong></p>
-<h1 id="jstack"><a href="#jstack" class="headerlink" title="jstack"></a>jstack</h1><p>用于生成虚拟机当前时刻的线程快照.</p>
-<p>命令格式: <strong>jstack [options] vmid</strong></p>
-<p><strong>optinos</strong> : <br><br><strong>-F</strong> : 当正常输出的请求不被响应时,强制输出线程堆栈 <br><br><strong>-l</strong> : 除堆栈外,显示关于锁的附加信息 <br><br><strong>-m</strong> : 如果调用到本地方法的话,显示C/C++的堆栈</p>
+        <h1 id="Java中线程的状态"><a href="#Java中线程的状态" class="headerlink" title="Java中线程的状态"></a>Java中线程的状态</h1><p>在JVM中给线程定义了六种状态: <br><br><strong>NEW</strong> : 当一个线程被实例化,还未调用start()方法时的状态. <br><br><strong>RUNNABLE</strong> : 线程处于运行时的状态,但并不是所有<strong>RUNNABLE</strong>状态的线程都在被CPU所执行,正在等待CPU分配时间片的线程状态也是<strong>RUNNABLE</strong>. <br><br><strong>BLOCKED</strong> : 线程阻塞状态,线程竞争锁失败,被阻塞时的状态.<br><br><strong>WAITING</strong> : 无限期等待状态,一般调用没有设置时间的Object.wait()、Thread.join()、LockSupport.park()方法会进入该状态,需要等待被其他线程显式唤醒. <br><br><strong>TIMED_WAITING</strong> : 限期等待状态,处于这种状态的线程无须等待被其他线程显式地唤醒,在一定时间之后它们会由系统自动唤醒,一般调用Thread.sleep()、带时间参数的Object.wait()、带时间参数的Thread.join()、LockSupport.parkNanos()、LockSupport.parkUntil()会进入该状态. <br><br><strong>TERMINATED</strong> : 该状态表示线程已经结束执行.</p>
+<h1 id="线程中断"><a href="#线程中断" class="headerlink" title="线程中断"></a>线程中断</h1><p>每个线程都有一个状态位用于标识当前线程对象是否是中断状态,中断状态的线程,在JVM层面并不会有什么特殊的不同,而需要我们在代码里去判断当前线程是否是中断状态,然后进行一些操作.</p>
+<p>中断一个线程的方法为:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Thread thread = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">                    System.out.println(<span class="string">"Hello"</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        thread.start();</span><br><span class="line">        thread.interrupt();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们使用thread.interrupt()方法来标记一个线程的中断状态为true.上述代码运行会一直输出Hello,线程并不会因为被中断了而直接停止运行,因为线程的中断需要我们自己在代码中进行判断.</p>
+<p>我们需要使用isInterrupted()方法或interrupted()方法来判断当前线程是否是中断状态,从而进行之后的逻辑操作.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">interrupted</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> currentThread().isInterrupted(<span class="keyword">true</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isInterrupted</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> isInterrupted(<span class="keyword">false</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">native</span> <span class="keyword">boolean</span> <span class="title">isInterrupted</span><span class="params">(<span class="keyword">boolean</span> ClearInterrupted)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>上述是JDK中Thread内的源码,我们可以看出, interrupted()方法是静态方法,并且返回当前线程中断标记的同时,会将中断标记清除(设置为false).isInterrupted()方法是实例方法,返回当前线程中断标记,不会清除线程的中断标记.</p>
+<p>所以上述代码我们可以改成:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        Thread thread = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (Thread.interrupted()) &#123;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    System.out.println(<span class="string">"Hello"</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        thread.start();</span><br><span class="line">        thread.interrupt();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样就可以中断线程,这种中断设计给了我们很大的灵活性.</p>
+<h1 id="线程状态对中断的影响"><a href="#线程状态对中断的影响" class="headerlink" title="线程状态对中断的影响"></a>线程状态对中断的影响</h1><p>当我们调用<strong>thread.interrupt()</strong>中断线程时,线程处于不同的状态对中断的响应是不同的.</p>
+<p><strong>NEW</strong>和<strong>TERMINATED</strong> : 这两种状态下的线程,当调用<strong>thread.interrupt</strong>时,并不会将线程的中断标记设置为ture,可能是因为线程还未启动或者是已经结束了,标记状态毫无意义.</p>
+<p><strong>RUNNABLE</strong>和<strong>BLOCKED</strong> : 这两种状态下的线程,当调用<strong>thread.interrupt</strong>时,会将线程的中断标记设置为ture,除此以外,不会进行其他额外操作.</p>
+<p><strong>WAITING</strong>和<strong>TIMED_WAITING</strong> : 这两种状态下的线程,当调用<strong>thread.interrupt</strong>时,会抛出一个<strong>InterruptedException</strong>异常,并且清空中断标记.</p>
 
       
     </div>
@@ -386,7 +384,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/JVM/" rel="tag"># JVM</a>
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+            <a href="/tags/线程/" rel="tag"># 线程</a>
           
         </div>
       
@@ -399,8 +399,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/07/JVM垃圾回收机制/" rel="next" title="JVM垃圾回收机制">
-                <i class="fa fa-chevron-left"></i> JVM垃圾回收机制
+              <a href="/2019/03/17/JVM监控命令/" rel="next" title="JVM监控命令">
+                <i class="fa fa-chevron-left"></i> JVM监控命令
               </a>
             
           </div>
@@ -408,10 +408,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/20/Java线程状态与中断/" rel="prev" title="Java线程状态与中断">
-                Java线程状态与中断 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -563,7 +559,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#jps"><span class="nav-number">1.</span> <span class="nav-text">jps</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#jstat"><span class="nav-number">2.</span> <span class="nav-text">jstat</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#jmap"><span class="nav-number">3.</span> <span class="nav-text">jmap</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#jinfo"><span class="nav-number">4.</span> <span class="nav-text">jinfo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#jstack"><span class="nav-number">5.</span> <span class="nav-text">jstack</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java中线程的状态"><span class="nav-number">1.</span> <span class="nav-text">Java中线程的状态</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线程中断"><span class="nav-number">2.</span> <span class="nav-text">线程中断</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线程状态对中断的影响"><span class="nav-number">3.</span> <span class="nav-text">线程状态对中断的影响</span></a></li></ol></div>
             
 
           </div>
