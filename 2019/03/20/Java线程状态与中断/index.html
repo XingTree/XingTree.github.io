@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="假装学习">
 <meta property="og:description" content="Java中线程的状态在JVM中给线程定义了六种状态: NEW : 当一个线程被实例化,还未调用start()方法时的状态. RUNNABLE : 线程处于运行时的状态,但并不是所有RUNNABLE状态的线程都在被CPU所执行,正在等待CPU分配时间片的线程状态也是RUNNABLE. BLOCKED : 线程阻塞状态,线程竞争锁失败,被阻塞时的状态.WAITING : 无限期等待状态,一般调用没有设">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-20T14:51:39.843Z">
+<meta property="og:updated_time" content="2019-03-21T14:58:51.260Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java线程状态与中断">
 <meta name="twitter:description" content="Java中线程的状态在JVM中给线程定义了六种状态: NEW : 当一个线程被实例化,还未调用start()方法时的状态. RUNNABLE : 线程处于运行时的状态,但并不是所有RUNNABLE状态的线程都在被CPU所执行,正在等待CPU分配时间片的线程状态也是RUNNABLE. BLOCKED : 线程阻塞状态,线程竞争锁失败,被阻塞时的状态.WAITING : 无限期等待状态,一般调用没有设">
@@ -366,7 +366,7 @@
 <h1 id="线程状态对中断的影响"><a href="#线程状态对中断的影响" class="headerlink" title="线程状态对中断的影响"></a>线程状态对中断的影响</h1><p>当我们调用<strong>thread.interrupt()</strong>中断线程时,线程处于不同的状态对中断的响应是不同的.</p>
 <p><strong>NEW</strong>和<strong>TERMINATED</strong> : 这两种状态下的线程,当调用<strong>thread.interrupt</strong>时,并不会将线程的中断标记设置为ture,可能是因为线程还未启动或者是已经结束了,标记状态毫无意义.</p>
 <p><strong>RUNNABLE</strong>和<strong>BLOCKED</strong> : 这两种状态下的线程,当调用<strong>thread.interrupt</strong>时,会将线程的中断标记设置为ture,除此以外,不会进行其他额外操作.</p>
-<p><strong>WAITING</strong>和<strong>TIMED_WAITING</strong> : 这两种状态下的线程,当调用<strong>thread.interrupt</strong>时,会抛出一个<strong>InterruptedException</strong>异常,并且清空中断标记.</p>
+<p><strong>WAITING</strong>和<strong>TIMED_WAITING</strong> : 这两种状态下的线程,当调用<strong>thread.interrupt</strong>时,会抛出一个<strong>InterruptedException</strong>异常,并且清空中断标记<strong>(LockSupport造成的等待不会抛出异常,也不会清空中断标记,只会退出等待,若要判断中断,需要自己写代码额外判断)</strong>.</p>
 
       
     </div>
