@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="假装学习">
 <meta property="og:description" content="Sun JDK包中提供了一系列工具用于查询JVM虚拟机的状态,这些工具都非常实用. jps显示指定系统内所有的HotSpot虚拟机进程. 命令格式: jps [optinos] optinos :-q : 只输出进程Id,省略主类名称-m : 输出虚拟机进程启动时传递给主类main()函数的参数-l : 输出主类的全名-v : 输出虚拟机进程启动时JVM参数 jstat用于监视虚拟机各种运行状态信">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-22T08:06:49.697Z">
+<meta property="og:updated_time" content="2019-03-22T08:08:13.212Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JVM监控命令">
 <meta name="twitter:description" content="Sun JDK包中提供了一系列工具用于查询JVM虚拟机的状态,这些工具都非常实用. jps显示指定系统内所有的HotSpot虚拟机进程. 命令格式: jps [optinos] optinos :-q : 只输出进程Id,省略主类名称-m : 输出虚拟机进程启动时传递给主类main()函数的参数-l : 输出主类的全名-v : 输出虚拟机进程启动时JVM参数 jstat用于监视虚拟机各种运行状态信">
@@ -359,16 +359,16 @@
 <h1 id="jstat"><a href="#jstat" class="headerlink" title="jstat"></a>jstat</h1><p>用于监视虚拟机各种运行状态信息.</p>
 <p>命令格式: <strong>jstat [optons vmid [interval][s|ms] [count]]</strong></p>
 <p><strong>vmid</strong> : 虚拟机进程Id<br><strong>interval</strong> : 查询间隔时间<br><strong>count</strong> : 查询次数</p>
-<p>eg: <br><br><strong>jstat -gc 2764 250 20</strong> 代表每250毫秒查询一次进程2764垃圾收集状况,一共查询20次.</p>
-<p><strong>optinos</strong> :<br><strong>-class</strong> : 显示类加载的相关信息<br><strong>-compiler</strong> : 显示JIT编译的相关信息<br><strong>-gc</strong> : 显示GC相关的信息<br><strong>-gccapacity</strong> : 显示各个代的容量以及使用情况 <br><br><strong>-gccause</strong> : 显示垃圾回收的相关信息,同时显示最后一次或当前正在发生的垃圾回收的诱因 <br><br><strong>-gcmetacapacity</strong> : 显示metaspace的大小 <br><br><strong>-gcnew</strong> : 显示新生代信息 <br><br><strong>-gcnewcapacity</strong> : 显示新生代大小和使用情况 <br><br><strong>-gcold</strong> : 显示老年代和永久代的信息 <br><br><strong>-gcoldcapacity</strong> : 显示老年代的大小 <br><br><strong>-gcutil</strong> : 显示垃圾收集信息 <br><br><strong>-printcompilation</strong> : 输出JIT编译的方法信息 <br></p>
+<p>eg:<br><strong>jstat -gc 2764 250 20</strong> 代表每250毫秒查询一次进程2764垃圾收集状况,一共查询20次.</p>
+<p><strong>optinos</strong> :<br><strong>-class</strong> : 显示类加载的相关信息<br><strong>-compiler</strong> : 显示JIT编译的相关信息<br><strong>-gc</strong> : 显示GC相关的信息<br><strong>-gccapacity</strong> : 显示各个代的容量以及使用情况<br><strong>-gccause</strong> : 显示垃圾回收的相关信息,同时显示最后一次或当前正在发生的垃圾回收的诱因<br><strong>-gcmetacapacity</strong> : 显示metaspace的大小<br><strong>-gcnew</strong> : 显示新生代信息<br><strong>-gcnewcapacity</strong> : 显示新生代大小和使用情况<br><strong>-gcold</strong> : 显示老年代和永久代的信息<br><strong>-gcoldcapacity</strong> : 显示老年代的大小<br><strong>-gcutil</strong> : 显示垃圾收集信息<br><strong>-printcompilation</strong> : 输出JIT编译的方法信息</p>
 <h1 id="jmap"><a href="#jmap" class="headerlink" title="jmap"></a>jmap</h1><p>用于监视虚拟机中内存情况.</p>
 <p>命令格式: <strong>jmap [options] vmid</strong></p>
-<p><strong>optinos</strong> : <br><br><strong>-heap</strong> : 输出虚拟机堆内存相关信息 <br><br><strong>-histo[:live]</strong> : 输出虚拟机堆中类的对象占用信息,如果加了”:live”,则只输出存活的类的对象的占用信息 <br><br><strong>-clstats</strong> : 打印类加载器的统计信息 <br><br><strong>-finalizerinfo</strong> : 打印正等候回收的对象的信息  <br><br><strong>-dump:<dump-options></dump-options></strong> : dump虚拟机堆到文件,<dump-options>包含<strong>live</strong>、<strong>format=b</strong>、<strong>file</strong>,eg:<strong>jmap -dump:live,format=b,file=dump.hprof vmid</strong></dump-options></p>
+<p><strong>optinos</strong> :<br><strong>-heap</strong> : 输出虚拟机堆内存相关信息<br><strong>-histo[:live]</strong> : 输出虚拟机堆中类的对象占用信息,如果加了”:live”,则只输出存活的类的对象的占用信息<br><strong>-clstats</strong> : 打印类加载器的统计信息<br><strong>-finalizerinfo</strong> : 打印正等候回收的对象的信息<br><strong>-dump:<dump-options></dump-options></strong> : dump虚拟机堆到文件,<dump-options>包含<strong>live</strong>、<strong>format=b</strong>、<strong>file</strong>,eg:<strong>jmap -dump:live,format=b,file=dump.hprof vmid</strong></dump-options></p>
 <h1 id="jinfo"><a href="#jinfo" class="headerlink" title="jinfo"></a>jinfo</h1><p>实时查看和调整虚拟机各项参数.</p>
 <p>命令格式: <strong>jinfo [options] vmid</strong></p>
 <h1 id="jstack"><a href="#jstack" class="headerlink" title="jstack"></a>jstack</h1><p>用于生成虚拟机当前时刻的线程快照.</p>
 <p>命令格式: <strong>jstack [options] vmid</strong></p>
-<p><strong>optinos</strong> : <br><br><strong>-F</strong> : 当正常输出的请求不被响应时,强制输出线程堆栈 <br><br><strong>-l</strong> : 除堆栈外,显示关于锁的附加信息 <br><br><strong>-m</strong> : 如果调用到本地方法的话,显示C/C++的堆栈</p>
+<p><strong>optinos</strong> :<br><strong>-F</strong> : 当正常输出的请求不被响应时,强制输出线程堆栈<br><strong>-l</strong> : 除堆栈外,显示关于锁的附加信息<br><strong>-m</strong> : 如果调用到本地方法的话,显示C/C++的堆栈</p>
 
       
     </div>
@@ -492,7 +492,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
